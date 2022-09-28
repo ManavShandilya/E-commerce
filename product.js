@@ -136,6 +136,21 @@ Products.forEach((product) => {
   </div>
   `;
   renderSection.append(renderEl);
+
+  const cartIcon = Array.from(document.getElementsByClassName('addToCart'));
+
+  console.log(cartIcon);
+
+  cartIcon.forEach((el)=>{
+    el.addEventListener('click', (e)=>{
+      const indx = parseInt(e.target.id);
+      console.log(indx);
+      cartNumbers(products[indx]);
+      totalCost(products[indx]);
+    });
+  })
+
+  
   
   const closeBtn = document.getElementById('closeBtn');
   closeBtn.addEventListener('click', ()=> {
@@ -143,12 +158,16 @@ Products.forEach((product) => {
    overlay.classList.remove('active');
    renderEl.innerHTML = ``;
   });
+
+  displayCart();
  })
 })
 
 //////////////////////////////Cart/////////////////////////////////////////
  
 const cartBtn = Array.from(document.getElementsByClassName('cartBtn'));
+
+
 
 console.log(cartBtn);
 
